@@ -1,82 +1,390 @@
-# Tweetprint
+# 🐦 Tweetprint
 
-Turn a tweet into a picture — write one from scratch or paste a URL, style the
-frame, and export a crisp PNG or JPEG. Built with Next.js (App Router),
-TypeScript, and Tailwind CSS v4.
+> **Turn any tweet into a beautiful, customizable picture.**
 
-No API keys, no login, no server-side account needed. Everything renders in
-your browser; the only network call is an optional server-side lookup when
-you paste a tweet URL.
+> **Made by Claude code and some few customization by myself**
 
-## Features
+![Project Status](https://img.shields.io/badge/Status-100%25%20Complete-success?style=for-the-badge)
+![Next.js](https://img.shields.io/badge/Next.js-App%20Router-black?style=for-the-badge\&logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?style=for-the-badge\&logo=typescript)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-v4-06B6D4?style=for-the-badge\&logo=tailwindcss)
 
-- **Write manually** — display name, handle, verified badge, avatar (upload
-  or URL), tweet text, an optional attached image, date/time label, and
-  reply/retweet/like/view counts.
-- **Paste a tweet URL** — a route handler (`app/api/tweet/route.ts`) calls
-  X's public oEmbed endpoint server-side (avoids CORS, needs no API key) and
-  pre-fills the tweet text and author. X's public oEmbed feed doesn't expose
-  avatars, media, or engagement counts, so those stay editable by hand.
-- **Frame styling** — light/dark card theme, 8 background presets (solid,
-  gradient, or transparent), adjustable padding, card corner radius, frame
-  corner radius, drop shadow, and an optional watermark.
-- **Export** — PNG or JPEG at 1×/2×/3× scale, downloaded straight from the
-  browser via [`html-to-image`](https://github.com/bubkoo/html-to-image). A
-  "Copy to clipboard" button appears in browsers that support the Clipboard
-  Images API.
-- A live dimension readout shows the exact output pixel size before you
-  export.
+## 📖 Overview
 
-## Getting started
+**Tweetprint** is a modern web application that allows you to turn a tweet into a high-quality image.
+
+You can either **create a tweet from scratch** or **paste a tweet URL** to automatically import its available content. The tweet can then be customized using different visual styles, backgrounds, spacing, borders, shadows, and other options before exporting it as a PNG or JPEG.
+
+The entire editing and export experience runs directly in the browser, with **no login or API key required**.
+
+## ✨ Features
+
+### 📝 Create Tweets Manually
+
+Create a tweet image from scratch with customizable:
+
+* Display name
+* Username / handle
+* Verified badge
+* Profile avatar
+* Tweet text
+* Attached image
+* Date and time
+* Reply count
+* Retweet count
+* Like count
+* View count
+
+### 🔗 Import From Tweet URL
+
+Paste an X/Twitter post URL and Tweetprint uses X's public **oEmbed endpoint** to retrieve available tweet information.
+
+The imported information is used to pre-fill:
+
+* Tweet text
+* Author name
+* Author handle
+
+Additional information such as avatars, media, engagement counts, and exact timestamps can be manually edited because they are not provided by the public oEmbed response.
+
+### 🎨 Custom Styling
+
+Customize the appearance of your generated tweet with:
+
+* Light and dark themes
+* Multiple background presets
+* Solid backgrounds
+* Gradient backgrounds
+* Transparent backgrounds
+* Adjustable padding
+* Card corner radius
+* Frame corner radius
+* Drop shadows
+* Optional watermark
+
+### 🖼️ High-Quality Export
+
+Export your finished tweet as:
+
+* PNG
+* JPEG
+
+Choose from:
+
+* 1× resolution
+* 2× resolution
+* 3× resolution
+
+Tweetprint also provides a live dimension readout so you can see the final output size before exporting.
+
+### 📋 Copy to Clipboard
+
+Supported browsers can copy the generated tweet image directly to the clipboard using the **Clipboard Images API**.
+
+### 🔒 Privacy-Friendly
+
+Tweetprint does not require:
+
+* User accounts
+* Login
+* API keys
+* A database
+* Server-side user accounts
+
+The tweet editor and image generation run in the browser. The optional tweet URL import uses a server-side route to communicate with X's public oEmbed endpoint.
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology           | Purpose                                 |
+| -------------------- | --------------------------------------- |
+| **Next.js**          | React framework and application routing |
+| **React**            | User interface                          |
+| **TypeScript**       | Type-safe development                   |
+| **Tailwind CSS v4**  | Styling                                 |
+| **html-to-image**    | Image generation and export             |
+| **X/Twitter oEmbed** | Tweet URL importing                     |
+
+---
+
+## 📂 Project Structure
+
+```text
+tweetprint/
+├── app/
+│   ├── api/
+│   │   └── tweet/
+│   │       └── route.ts
+│   ├── layout.tsx
+│   └── page.tsx
+│
+├── components/
+│   ├── Studio.tsx
+│   ├── ControlPanel.tsx
+│   ├── TweetCard.tsx
+│   ├── ui.tsx
+│   └── icons.tsx
+│
+├── lib/
+│   ├── types.ts
+│   └── format.ts
+│
+├── .gitignore
+├── AGENTS.md
+├── CLAUDE.md
+├── eslint.config.mjs
+├── next.config.ts
+├── package.json
+├── package-lock.json
+├── postcss.config.mjs
+├── tsconfig.json
+└── README.md
+```
+
+The main application workspace is handled by `Studio.tsx`, while `ControlPanel.tsx` provides the editing controls and `TweetCard.tsx` renders the tweet itself.
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+Make sure you have installed:
+
+* Node.js
+* npm
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/Ibrahist/tweetprint.git
+```
+
+### 2. Enter the project directory
+
+```bash
+cd tweetprint
+```
+
+### 3. Install dependencies
 
 ```bash
 npm install
+```
+
+### 4. Start the development server
+
+```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+### 5. Open the application
 
-## Building for production
+Visit:
+
+```text
+http://localhost:3000
+```
+
+The repository's current setup uses the standard Next.js development workflow.
+
+---
+
+## 🏗️ Production Build
+
+Create a production build:
 
 ```bash
 npm run build
+```
+
+Start the production server:
+
+```bash
 npm run start
 ```
 
-## Project structure
+---
 
+## 🔄 How It Works
+
+```text
+        ┌──────────────────────┐
+        │     Open Tweetprint  │
+        └──────────┬───────────┘
+                   │
+          ┌────────▼─────────┐
+          │ Create manually  │
+          │       OR         │
+          │ Paste Tweet URL  │
+          └────────┬─────────┘
+                   │
+          ┌────────▼─────────┐
+          │  Edit Tweet Data │
+          └────────┬─────────┘
+                   │
+          ┌────────▼─────────┐
+          │ Customize Frame  │
+          │ & Background     │
+          └────────┬─────────┘
+                   │
+          ┌────────▼─────────┐
+          │ Preview Result   │
+          └────────┬─────────┘
+                   │
+          ┌────────▼─────────┐
+          │ Export PNG/JPEG  │
+          └──────────────────┘
 ```
-app/
-  page.tsx              — header + the Studio workspace
-  layout.tsx             — fonts (Space Grotesk / Inter / IBM Plex Mono) & metadata
-  api/tweet/route.ts      — server-side oEmbed lookup for "Paste URL"
-components/
-  Studio.tsx              — state, the proofing-table canvas, export/copy pipeline
-  ControlPanel.tsx        — the spec-sheet form (source, author, message, frame, export)
-  TweetCard.tsx           — the tweet visual itself (light/dark, faithful to X's layout)
-  ui.tsx                  — shared form primitives (Section, Field, Slider, Toggle, …)
-  icons.tsx               — hand-drawn SVG icon set
-lib/
-  types.ts                — TweetData / StyleOptions / background presets
-  format.ts                — count formatting (1.2K), initials avatar, text segmenting
+
+---
+
+## 🔗 Tweet URL Import
+
+Tweetprint provides an API route:
+
+```text
+/app/api/tweet/route.ts
 ```
 
-## Notes on the tweet-URL import
+This route performs a server-side lookup against X's public oEmbed service. This approach avoids browser CORS restrictions and does not require an X API key.
 
-X's public `publish.twitter.com/oembed` endpoint is unauthenticated and
-intentionally limited — it returns an embeddable HTML snippet with the tweet
-text and author name, not a full API response. This app parses that snippet
-server-side to best-effort prefill the text and author fields. It cannot
-retrieve avatars, attached media, exact counts, or the original date/time,
-since X does not expose those without an authenticated API. If you need
-that data, editing it by hand after import is expected, not a bug.
+### Important Limitation
 
-## Deploying
+X's public oEmbed response does not provide all tweet metadata.
 
-The app is a standard Next.js project and deploys to any Next.js-compatible
-host (Vercel, Netlify, a Node server, etc.) with no environment variables
-required.
+Tweetprint therefore cannot automatically retrieve every piece of information, including:
 
-## License
+* Profile avatars
+* Attached media
+* Exact engagement counts
+* Original date/time
 
-MIT — do whatever you'd like with this.
+These values can be entered or adjusted manually after importing a tweet.
+
+---
+
+## 🎯 Use Cases
+
+Tweetprint can be useful for:
+
+* 📱 Social media content creation
+* 📰 News and editorial graphics
+* 📸 Creating tweet-style screenshots
+* 🖼️ Presentations and documentation
+* 🎨 Marketing materials
+* 📚 Educational content
+* 🗂️ Archiving important posts
+* 💬 Creating shareable quote cards
+
+---
+
+## 🌐 Deployment
+
+Tweetprint is a standard Next.js application and can be deployed to most platforms that support Next.js.
+
+Possible deployment platforms include:
+
+* Vercel
+* Netlify
+* Node.js servers
+* Other Next.js-compatible hosting providers
+
+No environment variables are required for the standard application setup.
+
+---
+
+## 🔐 Privacy
+
+Tweetprint is designed to keep the editing and rendering process local to the user's browser.
+
+There is:
+
+* ❌ No login system
+* ❌ No user account
+* ❌ No database
+* ❌ No required API key
+* ❌ No server-side storage of generated images
+
+Generated images are created directly in the browser.
+
+---
+
+## 🤝 Contributing
+
+Contributions, improvements, bug reports, and feature requests are welcome.
+
+### Fork the project
+
+```bash
+git clone https://github.com/Ibrahist/tweetprint.git
+cd tweetprint
+```
+
+### Create a feature branch
+
+```bash
+git checkout -b feature/my-feature
+```
+
+### Make your changes
+
+Test your changes locally:
+
+```bash
+npm run dev
+```
+
+### Commit your changes
+
+```bash
+git add .
+git commit -m "Add my feature"
+```
+
+### Push your branch
+
+```bash
+git push origin feature/my-feature
+```
+
+Then open a Pull Request on GitHub.
+
+---
+
+## 📜 License
+
+Tweetprint is released under the **MIT License**.
+
+You are free to use, modify, and distribute the project according to the terms of the license.
+I made it for myself but you can do whatever you'd like with this.
+
+---
+
+## 👨‍💻 Author
+
+**Ibrahist**
+
+GitHub:
+https://github.com/Ibrahist
+
+---
+
+## ⭐ Support
+
+If you find **Tweetprint** useful, consider giving the repository a ⭐ on GitHub.
+
+Every star helps support the project and encourages further development.
+
+---
+
+## 🔗 Repository
+
+https://github.com/Ibrahist/tweetprint
+
+---
+
+<p align="center">
+  Made with ❤️ using Next.js and TypeScript
+</p>
