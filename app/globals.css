@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+:root {
+  /* Paper — panel & card surfaces */
+  --paper: #f7f5ef;
+  --paper-dim: #eae7db;
+  --paper-line: rgba(18, 24, 43, 0.12);
+
+  /* Blueprint — the proofing table background */
+  --blueprint: #123157;
+  --blueprint-deep: #0a2340;
+  --blueprint-line: rgba(255, 255, 255, 0.09);
+  --blueprint-line-strong: rgba(255, 255, 255, 0.16);
+
+  /* Ink — text on paper */
+  --ink: #121a2b;
+  --ink-soft: #545e75;
+  --ink-faint: #8891a6;
+
+  /* Accents */
+  --marker: #e2531f;
+  --marker-dim: #c2440f;
+  --brass: #b6935f;
+
+  /* On-blueprint text */
+  --paper-on-blue: #eef2f8;
+  --paper-on-blue-soft: #9db3d1;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-dim: var(--paper-dim);
+  --color-paper-line: var(--paper-line);
+
+  --color-blueprint: var(--blueprint);
+  --color-blueprint-deep: var(--blueprint-deep);
+  --color-blueprint-line: var(--blueprint-line);
+  --color-blueprint-line-strong: var(--blueprint-line-strong);
+
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+
+  --color-marker: var(--marker);
+  --color-marker-dim: var(--marker-dim);
+  --color-brass: var(--brass);
+
+  --color-paper-on-blue: var(--paper-on-blue);
+  --color-paper-on-blue-soft: var(--paper-on-blue-soft);
+
+  --font-display: var(--font-space-grotesk);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-plex-mono);
+}
+
+body {
+  background: var(--blueprint);
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+
+/* Faint drafting grid on the blueprint canvas */
+.blueprint-grid {
+  background-image:
+    linear-gradient(var(--blueprint-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--blueprint-line) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+::selection {
+  background: var(--marker);
+  color: var(--paper);
+}
+
+/* Respect reduced-motion preferences globally */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
