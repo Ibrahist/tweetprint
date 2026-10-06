@@ -2,7 +2,6 @@
 
 > **Turn any tweet into a beautiful, customizable picture.**
 
-> **Made by Claude code and some few customization by myself**
 
 ![Project Status](https://img.shields.io/badge/Status-100%25%20Complete-success?style=for-the-badge)
 ![Next.js](https://img.shields.io/badge/Next.js-App%20Router-black?style=for-the-badge\&logo=next.js)
