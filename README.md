@@ -378,11 +378,6 @@ Every star helps support the project and encourages further development.
 
 ---
 
-## 🔗 Repository
-
-https://github.com/Ibrahist/tweetprint
-
----
 
 <p align="center">
   Made with ❤️ using Next.js and TypeScript
